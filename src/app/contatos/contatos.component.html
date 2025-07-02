@@ -1,0 +1,74 @@
+<div class="container p-4 rounded mt-5 mb-5" style="max-width: 700px; background-color: #1E1E2F; color: #E0E0E0;">
+  <h2 class="text-center mb-4" style="color: #3F8CFF;">Novo Contato</h2>
+  <form [formGroup]="formGroupContato">
+   
+    <div class="mb-3">
+      <label for="nome" class="form-label" style="color: #A0A0A0;">Nome completo</label>
+      <input formControlName="nome" type="text" class="form-control bg-dark text-light border-0" id="nome" placeholder="Digite o nome completo"  [ngClass]="{ 'is-invalid': f['nome'].touched && f['nome'].errors }">
+      <div *ngIf="f['nome'].touched && f['nome'].errors" class="invalid-feedback">
+    <div *ngIf="f['nome'].errors?.['required']">O nome é obrigatório.</div>
+  </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="apelido" class="form-label" style="color: #A0A0A0;">Apelido</label>
+      <input formControlName="apelido" type="text" class="form-control bg-dark text-light border-0" id="nome" placeholder="Digite o nome completo">
+    </div>
+
+    <div class="mb-3">
+      <label for="telefone" class="form-label" style="color: #A0A0A0;">Telefone</label>
+      <input formControlName="telefone" type="text" class="form-control bg-dark text-light border-0" id="telefone" placeholder="(11) 91234-5678" mask="(00) 00000-0000" 
+      [dropSpecialCharacters]="false" [ngClass]="{ 'is-invalid': f['telefone'].touched && f['telefone'].errors }">
+      <div *ngIf="f['telefone'].touched && f['telefone'].errors" class="invalid-feedback">
+    <div *ngIf="f['telefone'].errors?.['required']">O telefone é obrigatório.</div>
+    <div *ngIf="f['telefone'].errors?.['minlength']">O telefone está incompleto.</div>
+    </div>
+
+    <div class="mb-3">
+      <label for="email" class="form-label" style="color: #A0A0A0;">Email</label>
+      <input formControlName="email" type="email" class="form-control bg-dark text-light border-0" id="email" placeholder="email@exemplo.com">
+    </div>
+
+    <div class="mb-3">
+      <label for="endereco" class="form-label" style="color: #A0A0A0;">Endereço</label>
+      <input formControlName="endereco" type="text" class="form-control bg-dark text-light border-0" id="endereco" placeholder="Rua, número, bairro, cidade">
+    </div>
+
+    <div class="mb-3">
+      <label for="aniversario" class="form-label" style="color: #A0A0A0;">Data de Nascimento</label>
+      <input formControlName="aniversario" type="date" class="form-control bg-dark text-light border-0" id="dataNascimento">
+    </div>
+
+    <div class="mb-3">
+      <label for="categoria" class="form-label" style="color: #A0A0A0;">Categoria</label>
+      <select formControlName="categoria" class="form-select bg-dark text-light border-0" id="categoria">
+        <option selected disabled>Selecione uma categoria</option>
+        <option value="trabalho">Trabalho</option>
+        <option value="faculdade">Faculdade</option>
+        <option value="família">Família</option>
+        <option value="amigos">Amigos</option>
+     
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="genero" class="form-label" style="color: #A0A0A0;">Gênero</label>
+      <input formControlName="genero" type="text" class="form-control bg-dark text-light border-0" id="genero" placeholder="Masculino, Feminino, etc.">
+    </div>
+
+    <div class="mb-3">
+      <label for="profissao" class="form-label" style="color: #A0A0A0;">Profissão</label>
+      <input formControlName="profissao" type="text" class="form-control bg-dark text-light border-0" id="profissao" placeholder="Ex: Desenvolvedor">
+    </div>
+
+    <div class="mb-4">
+      <label for="nacionalidade" class="form-label" style="color: #A0A0A0;">Nacionalidade</label>
+      <input formControlName="nacionalidade" type="text" class="form-control bg-dark text-light border-0" id="nacionalidade" placeholder="Brasileira, Italiana, etc.">
+    </div>
+
+    <div class="d-flex justify-content-between">
+      <button type="submit" class="btn" style="background-color: #3F8CFF; color: white;"  (click)="save()" [disabled]="formGroupContato.invalid">Salvar</button>
+    
+    </div>
+
+</div>
