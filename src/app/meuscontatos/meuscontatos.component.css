@@ -56,3 +56,12 @@
     padding-left: 0;
   }
 }
+.nao-quebravel {
+  white-space: nowrap;
+}
+
+
+.coluna-acoes {
+  min-width: 170px;
+}
+

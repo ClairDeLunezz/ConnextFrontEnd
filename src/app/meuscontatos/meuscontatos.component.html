@@ -1,3 +1,70 @@
+<style>
+  
+  .filtros-container .btn-primary {
+    --bs-btn-bg: #BB9AF7;
+    --bs-btn-border-color: #BB9AF7;
+    --bs-btn-color: #1A1B26;
+    --bs-btn-hover-bg: #a181e0;
+    --bs-btn-hover-border-color: #a181e0;
+    --bs-btn-hover-color: #1A1B26;
+    font-weight: bold;
+  }
+  .filtros-container .btn-outline-primary {
+    --bs-btn-color: #BB9AF7;
+    --bs-btn-border-color: #BB9AF7;
+    --bs-btn-hover-bg: #BB9AF7;
+    --bs-btn-hover-border-color: #BB9AF7;
+    --bs-btn-hover-color: #1A1B26;
+  }
+  .filtros-container .btn-success {
+    --bs-btn-bg: #9ece6a;
+    --bs-btn-border-color: #9ece6a;
+    --bs-btn-color: #1A1B26;
+    font-weight: bold;
+  }
+  .filtros-container .btn-outline-success {
+    --bs-btn-color: #9ece6a;
+    --bs-btn-border-color: #9ece6a;
+    --bs-btn-hover-bg: #9ece6a;
+    --bs-btn-hover-border-color: #9ece6a;
+    --bs-btn-hover-color: #1A1B26;
+  }
+
+ 
+  .table-synthwave {
+    --bs-table-bg: #24283B;
+    --bs-table-color: #C0CAF5;
+    --bs-table-border-color: #414868;
+    --bs-table-striped-bg: #292e42;
+    --bs-table-hover-bg: #3b4261;
+     background-color: #24283B;
+
+  
+  border-radius: 0.5rem; 
+  overflow: hidden;     
+  border-collapse: separate; 
+  border-spacing: 0;
+}
+
+
+.table-synthwave th,
+.table-synthwave td {
+  padding: 1rem; 
+}
+  
+ 
+  .table-synthwave .text-warning {
+    color: #FF9E64 !important;
+  }
+  
+  .table-synthwave .btn-danger {
+    --bs-btn-bg: #f7768e;
+    --bs-btn-border-color: #f7768e;
+    --bs-btn-hover-bg: #d46d7f;
+    --bs-btn-hover-border-color: #d46d7f;
+  }
+</style>
+
 <div class="container mt-4" style="max-width: 700px;">
   <input 
     type="text" 
@@ -6,54 +73,123 @@
     [(ngModel)]="termoBusca" 
     (input)="pesquisar()">
 </div>
+<div class="container text-center my-4">
+  <div class="d-flex flex-wrap justify-content-center gap-3">
 
-<div *ngIf="isEditing" class="container p-4 rounded mt-5 mb-5" style="max-width: 700px; background-color: #1E1E2F; color: #E0E0E0;">
-  <h2 class="text-center mb-4" style="color: #3F8CFF;">Editar Contato</h2>
+<div class="container text-center my-4">
+  <div class="d-flex flex-wrap justify-content-center gap-3">
+
+    <div class="btn-group" role="group" aria-label="Filtros de Categoria">
+      
+      <button type="button" class="btn" 
+              [ngStyle]="categoriaFiltro === 'todos' 
+                ? {'background-color': '#BB9AF7', 'color': '#1A1B26', 'border-color': '#BB9AF7', 'font-weight': 'bold'} 
+                : {'background-color': 'transparent', 'color': '#BB9AF7', 'border-color': '#BB9AF7'}"
+              (click)="filtrarPorCategoria('todos')">Todas</button>
+      
+      <button type="button" class="btn" 
+              [ngStyle]="categoriaFiltro === 'trabalho' 
+                ? {'background-color': '#BB9AF7', 'color': '#1A1B26', 'border-color': '#BB9AF7', 'font-weight': 'bold'} 
+                : {'background-color': 'transparent', 'color': '#BB9AF7', 'border-color': '#BB9AF7'}"
+              (click)="filtrarPorCategoria('trabalho')">Trabalho</button>
+
+      <button type="button" class="btn" 
+              [ngStyle]="categoriaFiltro === 'faculdade' 
+                ? {'background-color': '#BB9AF7', 'color': '#1A1B26', 'border-color': '#BB9AF7', 'font-weight': 'bold'} 
+                : {'background-color': 'transparent', 'color': '#BB9AF7', 'border-color': '#BB9AF7'}"
+              (click)="filtrarPorCategoria('faculdade')">Faculdade</button>
+
+      <button type="button" class="btn" 
+              [ngStyle]="categoriaFiltro === 'família' 
+                ? {'background-color': '#BB9AF7', 'color': '#1A1B26', 'border-color': '#BB9AF7', 'font-weight': 'bold'} 
+                : {'background-color': 'transparent', 'color': '#BB9AF7', 'border-color': '#BB9AF7'}"
+              (click)="filtrarPorCategoria('família')">Família</button>
+
+      <button type="button" class="btn" [ngStyle]="categoriaFiltro === 'amigos' 
+                ? {'background-color': '#BB9AF7', 'color': '#1A1B26', 'border-color': '#BB9AF7', 'font-weight': 'bold'} 
+                : {'background-color': 'transparent', 'color': '#BB9AF7', 'border-color': '#BB9AF7'}"
+              (click)="filtrarPorCategoria('amigos')">Amigos</button>
+    </div>
+
+    <div class="btn-group" role="group" aria-label="Filtro de Favoritos">
+
+      <button type="button" class="btn" 
+              [ngStyle]="favoritoFiltro === 'todos' 
+                ? {'background-color': '#9ece6a', 'color': '#1A1B26', 'border-color': '#9ece6a', 'font-weight': 'bold'} 
+                : {'background-color': 'transparent', 'color': '#9ece6a', 'border-color': '#9ece6a'}"
+              (click)="filtrarPorFavorito('todos')">Todos</button>
+
+      <button type="button" class="btn" 
+              [ngStyle]="favoritoFiltro === 'favoritos' 
+                ? {'background-color': '#9ece6a', 'color': '#1A1B26', 'border-color': '#9ece6a', 'font-weight': 'bold'} 
+                : {'background-color': 'transparent', 'color': '#9ece6a', 'border-color': '#9ece6a'}"
+              (click)="filtrarPorFavorito('favoritos')">
+        Favoritos ★
+      </button>
+  </div>
+</div>
+</div>
+
+  </div>
+</div>
+<div *ngIf="isEditing" class="container p-4 rounded mt-5 mb-5" style="max-width: 700px; background-color: #24283B; color: #C0CAF5;">
+
+  <h2 class="text-center mb-4" style="color: #BB9AF7;">Editar Contato</h2>
+  
   <form [formGroup]="formGroupContato">
     
     <div class="row">
       <div class="col-md-6 mb-3">
-        <label for="nome" class="form-label" style="color: #A0A0A0;">Nome completo</label>
-        <input formControlName="nome" type="text" class="form-control bg-dark text-light border-0" id="nome" [ngClass]="{ 'is-invalid': f['nome'].touched && f['nome'].errors }">
+        <label for="nome" class="form-label" style="color: #C0CAF5;">Nome completo</label>
+        <input formControlName="nome" type="text" class="form-control border-0" id="nome" 
+               style="background-color: #1A1B26; color: #C0CAF5; border-color: #414868;"
+               [ngClass]="{ 'is-invalid': f['nome'].touched && f['nome'].errors }">
         <div *ngIf="f['nome'].touched && f['nome'].errors" class="invalid-feedback">
-    <div *ngIf="f['nome'].errors?.['required']">O nome é obrigatório.</div>
-  </div>
+          <div *ngIf="f['nome'].errors?.['required']">O nome é obrigatório.</div>
+        </div>
       </div>
       <div class="col-md-6 mb-3">
-        <label for="apelido" class="form-label" style="color: #A0A0A0;">Apelido</label>
-        <input formControlName="apelido" type="text" class="form-control bg-dark text-light border-0" id="apelido">
+        <label for="apelido" class="form-label" style="color: #C0CAF5;">Apelido</label>
+        <input formControlName="apelido" type="text" class="form-control border-0" id="apelido"
+               style="background-color: #1A1B26; color: #C0CAF5; border-color: #414868;">
       </div>
     </div>
 
     <div class="row">
       <div class="col-md-6 mb-3">
-        <label for="telefone" class="form-label" style="color: #A0A0A0;">Telefone</label>
-        <input formControlName="telefone" type="text" class="form-control bg-dark text-light border-0" id="telefone" placeholder="(11) 91234-5678"
-    mask="(00) 00000-0000" [dropSpecialCharacters]="false" [ngClass]="{ 'is-invalid': f['telefone'].touched && f['telefone'].errors }">
-     <div *ngIf="f['telefone'].touched && f['telefone'].errors" class="invalid-feedback">
-    <div *ngIf="f['telefone'].errors?.['required']">O telefone é obrigatório.</div>
-    <div *ngIf="f['telefone'].errors?.['minlength']">O telefone está incompleto.</div>
-  </div>
+        <label for="telefone" class="form-label" style="color: #C0CAF5;">Telefone</label>
+        <input formControlName="telefone" type="text" class="form-control border-0" id="telefone" placeholder="(11) 91234-5678"
+               mask="(00) 00000-0000" [dropSpecialCharacters]="false" 
+               style="background-color: #1A1B26; color: #C0CAF5; border-color: #414868;"
+               [ngClass]="{ 'is-invalid': f['telefone'].touched && f['telefone'].errors }">
+        <div *ngIf="f['telefone'].touched && f['telefone'].errors" class="invalid-feedback">
+          <div *ngIf="f['telefone'].errors?.['required']">O telefone é obrigatório.</div>
+          <div *ngIf="f['telefone'].errors?.['minlength']">O telefone está incompleto.</div>
+        </div>
       </div>
       <div class="col-md-6 mb-3">
-        <label for="email" class="form-label" style="color: #A0A0A0;">Email</label>
-        <input formControlName="email" type="email" class="form-control bg-dark text-light border-0" id="email">
+        <label for="email" class="form-label" style="color: #C0CAF5;">Email</label>
+        <input formControlName="email" type="email" class="form-control border-0" id="email"
+               style="background-color: #1A1B26; color: #C0CAF5; border-color: #414868;">
       </div>
     </div>
 
     <div class="mb-3">
-      <label for="endereco" class="form-label" style="color: #A0A0A0;">Endereço</label>
-      <input formControlName="endereco" type="text" class="form-control bg-dark text-light border-0" id="endereco">
+      <label for="endereco" class="form-label" style="color: #C0CAF5;">Endereço</label>
+      <input formControlName="endereco" type="text" class="form-control border-0" id="endereco"
+             style="background-color: #1A1B26; color: #C0CAF5; border-color: #414868;">
     </div>
 
     <div class="row">
       <div class="col-md-6 mb-3">
-        <label for="aniversario" class="form-label" style="color: #A0A0A0;">Data de Nascimento</label>
-        <input formControlName="aniversario" type="date" class="form-control bg-dark text-light border-0" id="aniversario">
+        <label for="aniversario" class="form-label" style="color: #C0CAF5;">Data de Nascimento</label>
+        <input formControlName="aniversario" type="date" class="form-control border-0" id="aniversario" 
+               style="background-color: #1A1B26; color: #C0CAF5; border-color: #414868;">
       </div>
       <div class="col-md-6 mb-3">
-        <label for="categoria" class="form-label" style="color: #A0A0A0;">Categoria</label>
-        <select formControlName="categoria" class="form-select bg-dark text-light border-0" id="categoria">
+        <label for="categoria" class="form-label" style="color: #C0CAF5;">Categoria</label>
+        <select formControlName="categoria" class="form-select border-0" id="categoria"
+                style="background-color: #1A1B26; color: #C0CAF5; border-color: #414868;">
           <option selected disabled value="">Selecione uma categoria</option>
           <option value="trabalho">Trabalho</option>
           <option value="faculdade">Faculdade</option>
@@ -65,122 +201,137 @@
 
     <div class="row">
       <div class="col-md-4 mb-3">
-        <label for="genero" class="form-label" style="color: #A0A0A0;">Gênero</label>
-        <input formControlName="genero" type="text" class="form-control bg-dark text-light border-0" id="genero">
+        <label for="genero" class="form-label" style="color: #C0CAF5;">Gênero</label>
+        <input formControlName="genero" type="text" class="form-control border-0" id="genero"
+               style="background-color: #1A1B26; color: #C0CAF5; border-color: #414868;">
       </div>
       <div class="col-md-4 mb-3">
-        <label for="profissao" class="form-label" style="color: #A0A0A0;">Profissão</label>
-        <input formControlName="profissao" type="text" class="form-control bg-dark text-light border-0" id="profissao">
+        <label for="profissao" class="form-label" style="color: #C0CAF5;">Profissão</label>
+        <input formControlName="profissao" type="text" class="form-control border-0" id="profissao"
+               style="background-color: #1A1B26; color: #C0CAF5; border-color: #414868;">
       </div>
       <div class="col-md-4 mb-3">
-        <label for="nacionalidade" class="form-label" style="color: #A0A0A0;">Nacionalidade</label>
-        <input formControlName="nacionalidade" type="text" class="form-control bg-dark text-light border-0" id="nacionalidade">
+        <label for="nacionalidade" class="form-label" style="color: #C0CAF5;">Nacionalidade</label>
+        <input formControlName="nacionalidade" type="text" class="form-control border-0" id="nacionalidade"
+               style="background-color: #1A1B26; color: #C0CAF5; border-color: #414868;">
       </div>
     </div>
 
     <div class="form-check my-4">
       <input class="form-check-input" type="checkbox" formControlName="favorito" id="favorito">
-      <label class="form-check-label" for="favorito" style="color: #A0A0A0;">
+      <label class="form-check-label" for="favorito" style="color: #C0CAF5;">
         Favorito ⭐
       </label>
     </div>
     
     <div class="d-flex justify-content-between">
-      <button type="submit" class="btn" style="background-color: #3F8CFF; color: white;" (click)="update()"[disabled]="formGroupContato.invalid">Atualizar</button>
-      <button type="button" class="btn btn-secondary" (click)="clear()">Cancelar</button>
+      <button type="submit" class="btn fw-bold" style="background-color: #BB9AF7; color: #1A1B26; border: none;" (click)="update()" [disabled]="formGroupContato.invalid">Atualizar</button>
+      
+      <button type="button" class="btn" 
+              style="--bs-btn-color: #79E6F3; --bs-btn-border-color: #79E6F3; --bs-btn-hover-color: #1A1B26; --bs-btn-hover-bg: #79E6F3; --bs-btn-hover-border-color: #79E6F3;" 
+              (click)="clear()">Cancelar</button>
     </div>
   </form>
 </div>
+    
+   
+  
+
 
 <div class="tables-container">
-
   <div *ngIf="!pesquisaAtiva">
     <div class="container">
-      <h2 class="text-center mt-5">Contatos Cadastrados</h2>
-      <div class="table-responsive">
-        <table class="table table-striped mt-3">
+      <h2 class="text-center mt-5" style="color: #BB9AF7;">Contatos Cadastrados</h2>
+      <div *ngIf="contatos.length > 0" class="table-responsive">
+        <table class="table table-dark table-hover mt-3 align-middle table-synthwave">
           <thead>
             <tr>
               <th>Nome</th>
               <th>Apelido</th>
-              <th>Telefone</th>
+              <th class="nao-quebravel">Telefone</th>
               <th>Email</th>
-              <th>Endereço</th>
-              <th>Aniversário</th>
+              <th class="nao-quebravel">Aniversário</th>
               <th>Categoria</th>
-              <th>Favorito</th>
-              <th>Ações</th>
+              <th>Gênero</th>
+              <th>Profissão</th>
+              <th>Nacionalidade</th>
+              <th class="text-center">Favorito</th>
+              <th class="text-center nao-quebravel">Ações</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let c of contatos">
               <td data-label="Nome">{{ c.nome }}</td>
               <td data-label="Apelido">{{ c.apelido }}</td>
-              <td data-label="Telefone">{{ c.telefone }}</td>
+              <td data-label="Telefone" class="nao-quebravel">{{ c.telefone }}</td>
               <td data-label="Email">{{ c.email }}</td>
-               <td data-label="Email">{{ c.endereco }}</td>
-              <td data-label="Aniversário">{{ c.aniversario | date:'dd/MM/yyyy' }}</td>
+              <td data-label="Aniversário" class="nao-quebravel">{{ c.aniversario | date:'dd/MM/yyyy' }}</td>
               <td data-label="Categoria">{{ c.categoria }}</td>
+               <td data-label="Genero">{{ c.genero }}</td>
+                <td data-label="Profissão">{{ c.profissao }}</td>
+                 <td data-label="Nacionalidade">{{ c.nacionalidade }}</td>
               <td data-label="Favorito" class="text-center">
-                <span [ngClass]="{'text-warning': c.favorito, 'text-muted': !c.favorito}" style="font-size: 1.5rem;">
-                  {{ c.favorito ? '★' : '☆' }}
-                </span>
+                <span [ngClass]="{'text-warning': c.favorito, 'text-muted': !c.favorito}" style="font-size: 1.5rem;">{{ c.favorito ? '★' : '☆' }}</span>
               </td>
-              <td data-label="Ações">
-                <button class="btn btn-primary btn-sm me-2 mb-1" (click)="onClickupdate(c)">Editar</button>
-                <button class="btn btn-danger btn-sm mb-1" (click)="delete(c)">Remover</button>
+              <td data-label="Ações" class="coluna-acoes text-center">
+                <div class="d-flex gap-2 justify-content-center">
+                  <button class="btn btn-primary btn-sm" style="background-color: #BB9AF7; color: #1A1B26; border-color: #BB9AF7;" (click)="onClickupdate(c)">Editar</button>
+                  <button class="btn btn-danger btn-sm" style="background-color: #79E6F3; color: #1A1B26; border-color: #79E6F3;" (click)="delete(c)">Remover</button>
+                </div>
               </td>
             </tr>
           </tbody>
         </table>
       </div>
+      <div *ngIf="contatos.length === 0" class="text-center p-5 text-muted"><h4>Nenhum contato cadastrado ainda.</h4></div>
     </div>
   </div>
 
-  <div *ngIf="pesquisaAtiva">
+ <div *ngIf="pesquisaAtiva">
     <div class="container">
-      <h2 class="text-center mt-5">Resultados da Pesquisa</h2>
-      <div class="table-responsive">
-        <table class="table table-striped table-hover mt-3">
+      <h2 class="text-center mt-5" style="color: #BB9AF7;">Resultados da Pesquisa</h2>
+      <div *ngIf="contatosFiltrados.length > 0" class="table-responsive">
+        <table class="table table-dark table-hover mt-3 align-middle table-synthwave">
           <thead>
             <tr>
               <th>Nome</th>
               <th>Apelido</th>
-              <th>Telefone</th>
+              <th class="nao-quebravel">Telefone</th>
               <th>Email</th>
-              <th>Endereço</th>
-              <th>Aniversário</th>
+              <th class="nao-quebravel">Aniversário</th>
               <th>Categoria</th>
-              <th>Favorito</th>
-              <th>Ações</th>
+              <th>Gênero</th>
+              <th>Profissão</th>
+              <th>Nacionalidade</th>
+              <th class="text-center">Favorito</th>
+              <th class="text-center nao-quebravel">Ações</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let c of contatosFiltrados">
               <td data-label="Nome">{{ c.nome }}</td>
               <td data-label="Apelido">{{ c.apelido }}</td>
-              <td data-label="Telefone">{{ c.telefone }}</td>
+              <td data-label="Telefone" class="nao-quebravel">{{ c.telefone }}</td>
               <td data-label="Email">{{ c.email }}</td>
-              <td data-label="Email">{{ c.endereco }}</td>
-              <td data-label="Aniversário">{{ c.aniversario | date:'dd/MM/yyyy' }}</td>
+              <td data-label="Aniversário" class="nao-quebravel">{{ c.aniversario | date:'dd/MM/yyyy' }}</td>
               <td data-label="Categoria">{{ c.categoria }}</td>
+              <td data-label="Genero">{{ c.genero }}</td>
+                <td data-label="Profissão">{{ c.profissao }}</td>
+                 <td data-label="Nacionalidade">{{ c.nacionalidade }}</td>
               <td data-label="Favorito" class="text-center">
-                <span [ngClass]="{'text-warning': c.favorito, 'text-muted': !c.favorito}" style="font-size: 1.5rem;">
-                  {{ c.favorito ? '★' : '☆' }}
-                </span>
+                <span [ngClass]="{'text-warning': c.favorito, 'text-muted': !c.favorito}" style="font-size: 1.5rem;">{{ c.favorito ? '★' : '☆' }}</span>
               </td>
-              <td data-label="Ações">
-                <button class="btn btn-primary btn-sm me-2 mb-1" (click)="onClickupdate(c)">Editar</button>
-                <button class="btn btn-danger btn-sm mb-1" (click)="delete(c)">Remover</button>
+              <td data-label="Ações" class="coluna-acoes text-center">
+                <div class="d-flex gap-2 justify-content-center">
+                  <button class="btn btn-primary btn-sm" style="background-color: #BB9AF7; color: #1A1B26; border-color: #BB9AF7;" (click)="onClickupdate(c)">Editar</button>
+                  <button class="btn btn-danger btn-sm" style="background-color: #79E6F3; color: #1A1B26; border-color: #79E6F3;" (click)="delete(c)">Remover</button>
+                </div>
               </td>
-            </tr>
-            <tr *ngIf="contatosFiltrados.length === 0">
-              <td colspan="8" class="text-center text-muted">Nenhum contato encontrado.</td>
             </tr>
           </tbody>
         </table>
       </div>
+      <div *ngIf="contatosFiltrados.length === 0" class="text-center p-5 text-muted"><h4>Nenhum contato encontrado para a sua busca.</h4></div>
     </div>
   </div>
-
 </div>

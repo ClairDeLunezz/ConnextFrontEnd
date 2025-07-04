@@ -46,16 +46,38 @@ contatos: Contato[]= [];
    });
   }
   
-  save() {
-      this.service.save(this.formGroupContato.value).subscribe(
-        {
-          next: json => {
-            this.contatos.push(json);
-            this.formGroupContato.reset()
-          }
-        }
-      )
+save() {
+  if (this.formGroupContato.invalid) {
+    alert('Por favor, preencha os campos obrigatórios.');
+    return;
+  }
+
+  const novoContato = this.formGroupContato.value;
+
+
+
+
+  if (this.contatos.some(contato => contato.email === novoContato.email)) {
+    alert('Erro: Este email já existe na sua lista de contatos.');
+    return; 
+  }
+
+  
+  if (this.contatos.some(contato => contato.telefone === novoContato.telefone)) {
+    alert('Erro: Este telefone já existe na sua lista de contatos.');
+    return; 
+  }
+  this.service.save(novoContato).subscribe({
+    next: () => {
+      alert('Contato salvo com sucesso!');
+      this.loadContatos();
+      this.formGroupContato.reset();
+    },
+    error: (err) => {
+      alert(`Ocorreu um erro no servidor: ${err.message}`);
     }
+  });
+}
     delete(contato: Contato) {
       this.service.delete(contato).subscribe({
         next: ()  => this.loadContatos()
@@ -73,16 +95,39 @@ contatos: Contato[]= [];
     this.isEditing=false;
     this.formGroupContato.reset()
   }
-    update() {
-     this.service.update(this.formGroupContato.value).subscribe(
-      {
-        next: () =>{ this.loadContatos();
-          this.isEditing=false;
-        this.formGroupContato.reset()
-        }
-      }
-     )
-      }
+
+
+update() {
+  if (this.formGroupContato.invalid) {
+    alert('Por favor, preencha os campos obrigatórios.');
+    return;
+  }
+
+  const contatoEditado = this.formGroupContato.value;
+
+ 
+  if (this.contatos.some(c => c.email.toLowerCase() === contatoEditado.email.toLowerCase() && c.id !== contatoEditado.id)) {
+    alert('Erro: Este email já pertence a outro contato.');
+    return;
+  }
+  if (this.contatos.some(c => c.telefone === contatoEditado.telefone && c.id !== contatoEditado.id)) {
+    alert('Erro: Este telefone já pertence a outro contato.');
+    return;
+  }
+
+  
+  this.service.update(contatoEditado).subscribe({
+    next: () => {
+      alert('Contato atualizado com sucesso!');
+      this.loadContatos();
+      this.isEditing = false;
+      this.formGroupContato.reset();
+    },
+    error: (err) => {
+      alert(`Ocorreu um erro ao atualizar: ${err.message}`);
+    }
+  });
+}
 }
 
 

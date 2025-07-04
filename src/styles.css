@@ -2,7 +2,7 @@
 html, body {
   height: 100%;
   margin: 0;
-  background-color: #121212; /* A cor de fundo pode ficar aqui no body */
+  background-color: #121212; 
 }
 
 
@@ -19,4 +19,8 @@ app-root {
 
 .flex-grow-1 {
   flex-grow: 1;
+}
+
+.bg-surface {
+  background-color: #1e1e1e; /* Um cinza um pouco mais claro que o preto total */
 }

@@ -1,39 +1,48 @@
-<div class="container mt-5 text-light">
-  <div class="p-4 p-md-5 rounded bg-dark shadow-lg text-center">
-    <h1 class="display-5 fw-bold text-primary mb-4">Bem-vindo ao Connext!</h1>
-    <p class="lead mb-4">
+<div class="container mt-5">
+  <div class="p-4 p-md-5 rounded shadow-lg text-center" style="background-color: #1A1B26;">
+     <!-- NA APRESENTAÇÃO: Pra Mudar a cor do fundo principal do banner, so mudar o valor de 'background-color' -->
+
+    <h1 class="display-5 fw-bold mb-4" style="color: #BB9AF7;">Bem-vindo ao Connext!</h1>
+     <!-- PRA APRESENTAÇÃO: Pra Trocar a cor do título principal, troque o valor de 'color' aqui -->
+      Bem-vindo ao Connext!
+    <p class="lead mb-4" style="color: #C0CAF5;">
       Seu gerenciador de contatos pessoal, feito para quem quer organização e agilidade.
     </p>
-    <p class="mb-4">
-      Cadastre, atualize e gerencie informações importantes como nome, email, telefone, profissão, nacionalidade e mais!
-    </p>
+    <!-- DICA APRESENTAÇÃO: pra mudar a cor do subtítulo acima, modifique o valor de 'color' -->
+    
     <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
-      <a routerLink="/contatos" class="btn btn-primary btn-lg px-4">Novo Contato</a>
-      <a routerLink="/meuscontatos" class="btn btn-outline-primary btn-lg px-4">Ver Contatos</a>
+      <a routerLink="/contatos" class="btn btn-lg px-4 fw-bold" style="background-color: #BB9AF7; border-color: #BB9AF7; color: #1A1B26;">Novo Contato</a>
+      <!-- DICA APRESENTAÇÃO: Se pedir pra mudar a cor do botão "Novo Contato", altere 'background-color', 'border-color' ou 'color' dependendo se ele quiser que mude a cor do botao, da borda ou do texto -->
+      <a routerLink="/meuscontatos" class="btn btn-outline-light btn-lg px-4" 
+         style="--bs-btn-color: #79E6F3; --bs-btn-border-color: #79E6F3; --bs-btn-hover-bg: #79E6F3; --bs-btn-hover-border-color: #79E6F3; --bs-btn-hover-color: #1A1B26;">Ver Contatos</a>
     </div>
+
   </div>
 </div>
 
 
-<div class="container mt-5 mb-5 text-dark">
-  <div class="p-4 p-md-5 rounded bg-light shadow">
-    <h2 class="text-center text-dark mb-5">Funcionalidades do Connext</h2>
+<div class="container mt-5 mb-5">
+  <div class="p-4 p-md-5 rounded shadow" style="background-color: #24283B;">
+    <h2 class="text-center mb-5" style="color: #C0CAF5;">Funcionalidades do Connext</h2>
     <div class="row text-center g-4">
+      <!-- SE PRECISAR MUDAR: Só Muda a cor do título "Funcionalidades do Connext", altere o 'color' -->
 
       <div class="col-md-6">
-        <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3 rounded-circle" style="width: 3rem; height: 3rem;">
+        <div class="d-inline-flex align-items-center justify-content-center fs-2 mb-3 rounded-circle" 
+             style="width: 3.5rem; height: 3.5rem; background-color: rgba(187, 154, 247, 0.1); color: #BB9AF7;">
           <i class="bi bi-person-lines-fill"></i>
         </div>
-        <h5 class="fw-bold">Cadastro Completo</h5>
-        <p>Insira informações detalhadas como nome, telefone, email, profissão, nacionalidade e muito mais.</p>
+        <h5 class="fw-bold" style="color: #BB9AF7;">Cadastro Completo</h5>
+        <p style="color: #A9B1D6;">Insira informações detalhadas como nome, telefone, email e muito mais.</p>
       </div>
-
+      <!-- Se o Glauco perguntar: Modifique a cor de fundo ou o ícone do círculo-->
       <div class="col-md-6">
-        <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3 rounded-circle" style="width: 3rem; height: 3rem;">
+        <div class="d-inline-flex align-items-center justify-content-center fs-2 mb-3 rounded-circle" 
+             style="width: 3.5rem; height: 3.5rem; background-color: rgba(121, 230, 243, 0.1); color: #79E6F3;">
           <i class="bi bi-search"></i>
         </div>
-        <h5 class="fw-bold">Filtros Rápidos</h5>
-        <p>Encontre qualquer contato rapidamente com a busca inteligente que verifica múltiplos campos de uma só vez.</p>
+        <h5 class="fw-bold" style="color: #79E6F3;">Filtros Rápidos</h5>
+        <p style="color: #A9B1D6;">Encontre qualquer contato rapidamente com a busca e os filtros por categoria.</p>
       </div>
       
     </div>
@@ -41,15 +50,16 @@
 </div>
 
 
-<div class="container mt-5 mb-5 text-light">
-  <div class="p-4 p-md-5 rounded bg-dark shadow">
-    <h2 class="text-center text-primary mb-4">Sobre o Projeto</h2>
-    <p class="text-center">
+<div class="container mt-5 mb-5">
+  <div class="p-4 p-md-5 rounded shadow text-center" style="background-color: #1A1B26;">
+    <h2 class="text-center mb-4" style="color: #BB9AF7;">Sobre o Projeto</h2>
+    <p class="text-center" style="color: #A9B1D6;">
       Esta aplicação foi desenvolvida com Angular e Java como parte de um projeto acadêmico.
     </p>
-    <p class="text-center">
+     <!-- CASO  perguntar: É só mudar a cor do título desta funcionalidade -->
+    <p class="text-center" style="color: #A9B1D6;">
       O projeto demonstra conceitos aprendidos durante o semestre na matéria de programação web.
     </p>
-    <p class="text-center fst-italic mt-4">Versão 1.0 - Desenvolvido por Artur Henrique Cruz da Silva</p>
+    <p class="text-center fst-italic mt-4" style="color: #565F89;">Versão 1.0 - Desenvolvido por Artur Henrique Cruz da Silva</p>
   </div>
 </div>

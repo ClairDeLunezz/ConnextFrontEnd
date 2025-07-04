@@ -1,26 +1,20 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
   <div class="container">
-    <a class="navbar-brand text-primary fw-bold" routerLink="/">Connext</a>
-    <button 
-      class="navbar-toggler" 
-      type="button" 
-      data-bs-toggle="collapse" 
-      data-bs-target="#navbarNav" 
-      aria-controls="navbarNav" 
-      aria-expanded="false" 
-      aria-label="Toggle navigation">
+    <a class="navbar-brand fw-bold" routerLink="/" style="color: #79E6F3;">Connext</a>
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" routerLink="/" routerLinkActive="active text-primary fw-semibold" [routerLinkActiveOptions]="{exact: true}">Início</a>
+          <a class="nav-link" routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">Início</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/contatos" routerLinkActive="active text-primary fw-semibold">Novo Contato</a>
+          <a class="nav-link" routerLink="/contatos" routerLinkActive="active-link">Novo Contato</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/meuscontatos" routerLinkActive="active text-primary fw-semibold">Meus Contatos</a>
+          <a class="nav-link" routerLink="/meuscontatos" routerLinkActive="active-link">Meus Contatos</a>
         </li>
       </ul>
     </div>
