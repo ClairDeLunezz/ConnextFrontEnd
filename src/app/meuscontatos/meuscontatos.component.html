@@ -224,14 +224,17 @@
       </label>
     </div>
     
-    <div class="d-flex justify-content-between">
-      <button type="submit" class="btn fw-bold" style="background-color: #BB9AF7; color: #1A1B26; border: none;" (click)="update()" [disabled]="formGroupContato.invalid">Atualizar</button>
-      
-      <button type="button" class="btn" 
-              style="--bs-btn-color: #79E6F3; --bs-btn-border-color: #79E6F3; --bs-btn-hover-color: #1A1B26; --bs-btn-hover-bg: #79E6F3; --bs-btn-hover-border-color: #79E6F3;" 
-              (click)="clear()">Cancelar</button>
-    </div>
-  </form>
+ <div class="d-flex justify-content-between">
+
+  <button type="button" class="btn" 
+          style="--bs-btn-color: #79E6F3; --bs-btn-border-color: #79E6F3; --bs-btn-hover-color: #1A1B26; --bs-btn-hover-bg: #79E6F3; --bs-btn-hover-border-color: #79E6F3;" 
+          (click)="clear()">Cancelar</button>
+
+  <button type="submit" class="btn fw-bold" 
+          style="background-color: #BB9AF7; color: #1A1B26; border: none;" 
+          (click)="update()" 
+          [disabled]="formGroupContato.invalid">Atualizar</button>
+
 </div>
     
    
